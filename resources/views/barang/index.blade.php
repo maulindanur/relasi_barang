@@ -9,60 +9,114 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Barang</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
   <style>
+    /* Background Soft Yellow */
     body {
-      background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+      background: linear-gradient(135deg, #fff9d9, #fff4c4, #fff7e6);
       min-height: 100vh;
       font-family: "Poppins", sans-serif;
     }
 
+    /* Navbar Soft Cream */
     .navbar {
-      background-color: #ffffffc7;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      background-color: #ffffffd8;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 214, 122, 0.4);
     }
 
+    h2, h5 {
+      font-weight: 600;
+      color: #c28b00; /* Honey brown */
+    }
+
+    /* Card */
     .card {
       border: none;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      background: #ffffffb8;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(179, 142, 0, 0.18);
+      background: #fffdf4;
       backdrop-filter: blur(12px);
     }
 
+    /* Table Header */
     table th {
-      background: linear-gradient(#467bff);
-      color: white;
+      background: linear-gradient(#ffcc38);
+      color: #6a4a00;
       border: none;
     }
 
+    /* Row Hover */
     .table-hover tbody tr {
-      transition: all 0.2s ease-in-out;
+      transition: 0.2s ease;
     }
 
     .table-hover tbody tr:hover {
-      background-color: #f2f6ff;
-      transform: scale(1.005);
+      background-color: #fff3c4;
+      transform: scale(1.003);
     }
 
+    /* Buttons */
     .btn {
       border-radius: 10px;
-      transition: all 0.2s ease-in-out;
+      transition: 0.2s ease;
     }
 
     .btn:hover {
       transform: translateY(-2px);
+      opacity: 0.95;
     }
 
+    .btn-primary {
+      background-color: #ffcc33;
+      border: none;
+      color: #5e4500;
+    }
+
+    .btn-primary:hover {
+      background-color: #e6b62e;
+    }
+
+    .btn-warning {
+      background-color: #ffe28b;
+      border: none;
+      color: #6b4d00;
+    }
+
+    .btn-warning:hover {
+      background-color: #ffda6a;
+    }
+
+    .btn-danger {
+      background-color: #ff9f40;
+      border: none;
+    }
+
+    .btn-danger:hover {
+      background-color: #ff8a1a;
+    }
+
+    /* Search Box */
     .search-box {
       position: relative;
     }
 
     .search-box input {
       padding-left: 38px;
-      border-radius: 10px;
-      border: 1px solid #d0d7de;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      border: 1px solid #ffe08a;
+      box-shadow: 0 1px 4px rgba(255, 193, 7, 0.25);
+      background-color: #fffdf4;
     }
 
     .search-box i {
@@ -70,47 +124,40 @@
       top: 50%;
       left: 12px;
       transform: translateY(-50%);
-      color: #6c757d;
+      color: #d39b00;
     }
 
-    h2 {
-      font-weight: 600;
-      color: #0d6efd;
-    }
-
-    /* Pagination modern style */
-    .pagination {
-      margin: 0;
-    }
-
+    /* Pagination */
     .pagination .page-item .page-link {
       border: none;
-      color: #0d6efd;
+      color: #c28b00;
       border-radius: 10px;
       margin: 0 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: all 0.2s ease-in-out;
+      background-color: #fff7dc;
+      box-shadow: 0px 1px 3px rgba(184,150,0,0.25);
     }
 
     .pagination .page-item .page-link:hover {
-      background-color: #0d6efd;
-      color: #fff;
-      transform: translateY(-2px);
+      background-color: #ffcd45;
+      color: white;
     }
 
     .pagination .active .page-link {
-      background-color: #0d6efd;
+      background-color: #ffcd45;
       color: white;
-      box-shadow: 0 2px 6px rgba(13,110,253,0.4);
+      box-shadow: 0px 2px 6px rgba(255,193,7,0.4);
     }
 
+    /* Footer */
     .footer {
       text-align: center;
-      color: #6c757d;
+      color: #a0781a;
       font-size: 0.9rem;
       margin-top: 40px;
     }
   </style>
+</head>
+
 </head>
 
 <body>
@@ -137,22 +184,24 @@
 
   <div class="container py-5">
     <div class="card p-4">
-      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
         <h5 class="fw-semibold mb-0">📋 Daftar Barang</h5>
 
-        <div class="d-flex gap-2">
-          <!-- Search -->
-          <div class="search-box">
-            <i class="bi bi-search"></i>
-            <input type="text" id="searchInput" class="form-control" placeholder="Cari barang...">
-          </div>
-
-          <!-- Tambah -->
-          <a href="{{ route('barang.create') }}" class="btn btn-primary d-flex align-items-center gap-2">
-            <i class="bi bi-plus-circle"></i> Tambah
-          </a>
+        <div>
+            <a href="{{ route('barang.create') }}" class="btn btn-primary d-flex align-items-center gap-2">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </a>
         </div>
       </div>
+
+      <!-- Search Full Width -->
+      <div class="mb-4">
+          <div class="search-box w-100">
+              <i class="bi bi-search"></i>
+              <input type="text" id="searchInput" class="form-control w-100" placeholder="Cari barang...">
+          </div>
+      </div>
+
 
       <!-- Table -->
 <div class="table-responsive">
